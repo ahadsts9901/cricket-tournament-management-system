@@ -1,8 +1,14 @@
+import { useState } from "react"
 import "./App.css"
 
 const App = () => {
+
+    const [teams, set_teams] = useState([])
+
     return (
-        <div>App</div>
+        <div>
+            {/* <form onSubmit={addTeam}></form> */}
+        </div>
     )
 }
 
