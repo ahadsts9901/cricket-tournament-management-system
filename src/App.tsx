@@ -1,5 +1,9 @@
 import "./App.css"
 
-const App = () => <div className="chatbot-sts">Chatbot</div>
+const App = () => {
+    return (
+        <div>App</div>
+    )
+}
 
 export default App
