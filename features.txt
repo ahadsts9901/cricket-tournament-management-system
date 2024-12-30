@@ -1,0 +1,16 @@
+cricket teams crud
+all with local storage
+
+when a team is created so automatically schedule its matches with all teams
+when a team is updated so also update his data in matches
+if a team is deleted so automatically remove his all matches
+
+matches score crud
+
+point table
+points and played matches, lose matches, wins, ties and also net runrate according to the runs
+
+also update teams positions on the points table like 1st or second
+
+additional features:
+    also add "q" sign if a team is 100% qualified
