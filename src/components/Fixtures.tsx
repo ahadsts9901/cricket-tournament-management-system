@@ -1,26 +1,40 @@
 import "./index.css"
 import { Match, State, Team } from "../types"
 import { Button, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: number, state: State, set_state: any }) => {
+
+    const [full_match, set_full_match] = useState<Match>(match)
+
     return (
         <div className="single-match">
             <div className="w-full flex justify-start items-center gap-2">
                 <p className="w-[75px] text-left text-purple-800">{`${index + 1})`}</p>
-                <TextField style={{ width: "80px" }} placeholder="Runs" />
-                <TextField style={{ width: "80px" }} placeholder="Wickets" />
-                <TextField style={{ width: "80px" }} placeholder="Overs" />
+                <TextField style={{ width: "80px" }} placeholder="Runs"
+                    value={full_match.team1.runs}
+                    onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, runs: e.target.value } })}
+                />
+                <TextField style={{ width: "80px" }} placeholder="Wickets"
+                    value={full_match.team1.wickets}
+                    onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, wickets: e.target.value } })}
+                />
+                <TextField style={{ width: "80px" }} placeholder="Overs"
+                    value={full_match.team1.overs}
+                    onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, overs: e.target.value } })}
+                />
             </div>
             <p className="capitalize">{match.team1.teamName}</p>
             <p>vs</p>
             <p className="capitalize">{match.team2.teamName}</p>
             <div className="w-full flex justify-end items-center gap-2">
-                <TextField style={{ width: "80px" }} placeholder="Runs" />
+                <TextField style={{ width: "80px" }} placeholder="Runs" 
+                value={full_match.team1.runs}
+                onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, runs: e.target.value } })}
+                />
                 <TextField style={{ width: "80px" }} placeholder="Wickets" />
                 <TextField style={{ width: "80px" }} placeholder="Overs" />
-                <Button variant="outlined" color="primary"
-                    sx={{ width: "65px" }}
-                >Save</Button>
+                <Button variant="outlined" color="primary" sx={{ width: "65px" }}>Save</Button>
             </div>
         </div>
     )
