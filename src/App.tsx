@@ -1,8 +1,11 @@
+import { Button } from "@mui/material"
 import "./App.css"
 
 const App = () => {
     return (
-        <div>App</div>
+        <div>
+            <Button>hello</Button>
+        </div>
     )
 }
 
