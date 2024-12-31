@@ -3,8 +3,8 @@ $semiDark: #3c0a6d;
 $main: #7a2cbe;
 $semiLight: #9d4edd;
 $light: #e0aafe;
-$purpleWhite: #fdecff;
-$purpleDark: #1f112f;
+$whitePurpleText: #fdecff;
+$darkPurpleText: #1f112f;
 
 * {
   margin: 0;
@@ -19,5 +19,5 @@ body,
 #root {
   width: 100vw;
   height: 100vh;
-  background-color: #18171f;
+  background-color: $dark;
 }
