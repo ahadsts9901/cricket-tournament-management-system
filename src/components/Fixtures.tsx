@@ -1,7 +1,7 @@
 import "./index.css"
 import { Match, State, Team } from "../types"
 import { Button, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: number, state: State, set_state: any }) => {
 
@@ -122,9 +122,12 @@ const Fixtures = ({ state, set_state }: any) => {
         <div className="w-full flex flex-col gap-2">
             <div className="w-full flex justify-between items-center flex-wrap">
                 <h2 className="text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2 mr-4">Fixtures</h2>
-                <Button className="w-[180px]" color="primary" variant="outlined"
-                    onClick={generateFixtures}
-                >Generate Fixtures</Button>
+                <div className="flex justify-start items-center gap-2">
+                    
+                    <Button className="w-[180px]" color="primary" variant="outlined"
+                        onClick={generateFixtures}
+                    >Generate Fixtures</Button>
+                </div>
             </div>
             <div className="w-full flex flex-col p-2 gap-2 teams-cont">
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
