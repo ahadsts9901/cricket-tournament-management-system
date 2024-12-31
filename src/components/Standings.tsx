@@ -1,6 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { Match, Team } from "../types";
 import { useState } from "react";
+import DataTable from "./DataTable";
 
 const Standings = ({ state, set_state }: any) => {
     const [overs, set_overs] = useState(state?.overs)
@@ -125,7 +126,7 @@ const Standings = ({ state, set_state }: any) => {
     return (
         <div className="w-full flex flex-col gap-2">
             <div className="w-full flex justify-between items-center flex-wrap gap-2 mb-2">
-                <h2 className="text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2 mr-4">Fixtures</h2>
+                <h2 className="text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2 mr-4">Standings</h2>
                 <div className="flex justify-start items-center gap-2 flex-wrap">
                     <Button className="w-[180px]" color="primary" variant="outlined"
                         onClick={update_standings}
@@ -142,6 +143,7 @@ const Standings = ({ state, set_state }: any) => {
                 />
                 <Button onClick={saveOvers} variant="outlined" color="primary">Save</Button>
             </div>
+            <DataTable data={state?.standings} />
         </div>
     )
 }
