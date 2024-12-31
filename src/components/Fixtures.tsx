@@ -63,7 +63,6 @@ const Fixtures = ({ state, set_state }: any) => {
                     team1: { ...teams[i], overs: 0, runs: 0, wickets: 0 },
                     team2: { ...teams[j], overs: 0, runs: 0, wickets: 0 }
                 };
-
                 const matchExists = matches.some((match: any) =>
                     (match.team1.id === newMatch.team1.id && match.team2.id === newMatch.team2.id) ||
                     (match.team1.id === newMatch.team2.id && match.team2.id === newMatch.team1.id)
@@ -73,7 +72,11 @@ const Fixtures = ({ state, set_state }: any) => {
             }
         }
 
-        return matches;
+        if (duplicates) {
+            return [...matches, ...matches]
+        } else {
+            return matches
+        }
     };
 
     const sortMatches = (matches: { team1: Team; team2: Team }[]) => {
@@ -99,7 +102,7 @@ const Fixtures = ({ state, set_state }: any) => {
             }
         }
 
-        return sorted;
+        return matches;
     };
 
     const shuffleArray = (array: any[]) => {
@@ -134,10 +137,10 @@ const Fixtures = ({ state, set_state }: any) => {
                     >Generate Fixtures</Button>
                 </div>
             </div>
-            <FormControlLabel 
-            control={<Switch size="small" checked={duplicates} sx={{ mr: 1, ml: 1 }} 
-            onChange={(e:any)=>set_duplicates(e?.target?.checked)}
-            />} label="Duplicate Matches" />
+            <FormControlLabel
+                control={<Switch size="small" checked={duplicates} sx={{ mr: 1, ml: 1 }}
+                    onChange={(e: any) => set_duplicates(e?.target?.checked)}
+                />} label="Duplicate Matches" />
             <div className="w-full flex flex-col p-2 gap-2 teams-cont">
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
                     <SingleMatch match={match} state={state} set_state={set_state} key={i} index={i} />
