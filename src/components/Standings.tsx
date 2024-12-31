@@ -85,13 +85,13 @@ const Standings = ({ state, set_state }: any) => {
                 if (match.team1.id === team.id) {
                     // If team1 is bowling, check if team2 is all out
                     if (match.team2.wickets === 10) {
-                        return acc + convertOversToBalls(match.team2.overs); // Add actual balls faced by team2
+                        return acc + totalBallsForNRR; // Set to totalBallsForNRR if team2 is all out
                     }
                     return acc + convertOversToBalls(match.team2.overs); // Add total overs bowled
                 } else if (match.team2.id === team.id) {
                     // If team2 is bowling, check if team1 is all out
                     if (match.team1.wickets === 10) {
-                        return acc + convertOversToBalls(match.team1.overs); // Add actual balls faced by team1
+                        return acc + totalBallsForNRR; // Set to totalBallsForNRR if team1 is all out
                     }
                     return acc + convertOversToBalls(match.team1.overs); // Add total overs bowled
                 }
