@@ -1,10 +1,11 @@
+import "./index.css"
 import { Match, Team } from "../types"
 import { Button } from "@mui/material";
 
 const SingleMatch = ({ match, state, set_state }: any) => {
     return (
         <div className="single-match">
-            
+
         </div>
     )
 }
@@ -89,9 +90,14 @@ const Fixtures = ({ state, set_state }: any) => {
                     onClick={generateFixtures}
                 >Generate Fixtures</Button>
             </div>
-            <div className="w-full flex flex-col gap-2 p-2 teams-cont">
+            <div className="w-full flex flex-col gap-4 p-2 teams-cont">
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
-                    <SingleMatch key={i} match={match} state={state} set_state={set_state} />
+                    <div key={i}
+                        className="w-full flex justify-start items-start gap-2"
+                    >
+                        <p className="w-[100px] text-left text-purple-800">{`${i + 1})`}</p>
+                        <SingleMatch match={match} state={state} set_state={set_state} />
+                    </div>
                 )) : null}
             </div>
         </div>
