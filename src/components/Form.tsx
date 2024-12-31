@@ -19,6 +19,7 @@ export const Form = ({ teams, set_teams }: any) => {
                 fullWidth
                 onChange={(e: any) => set_team(e.target.value)}
                 value={team}
+                placeholder="Enter team name"
             />
             <Button className="w-[150px]" color="primary" variant="outlined">Add Team</Button>
         </form>
