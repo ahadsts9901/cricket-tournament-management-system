@@ -14,7 +14,7 @@ export const Form = ({ teams, set_teams }: any) => {
     }
 
     return (
-        <form className="w-full flex gap-4" onSubmit={addTeam}>
+        <form className="w-full flex gap-4 flex-wrap justify-end p-2" onSubmit={addTeam}>
             <TextField
                 fullWidth
                 onChange={(e: any) => set_team(e.target.value)}

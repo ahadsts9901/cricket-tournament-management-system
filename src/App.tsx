@@ -31,7 +31,7 @@ const App = () => {
     console.log("state", state)
 
     return (
-        <div className="w-screen h-screen flex flex-col justify-start items-center gap-4 p-4 bg-purple-50">
+        <div className="w-screen h-screen flex flex-col justify-start items-center gap-4 p-2 bg-purple-50">
             <h2 className="text-4xl text-purple-700 font uppercase tracking-[8px] my-4">Title</h2>
             <Form
                 set_teams={set_teams}

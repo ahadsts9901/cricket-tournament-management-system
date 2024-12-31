@@ -46,9 +46,9 @@ const TabBar = () => {
         <Box sx={{ width: '100%', mt: 1 }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="fullWidth">
-                    <Tab label="Teams" {...a11yProps(0)} />
-                    <Tab label="Fixtures" {...a11yProps(1)} />
-                    <Tab label="Standings" {...a11yProps(2)} />
+                    <Tab style={{ fontSize: "0.8em" }} label="Teams" {...a11yProps(0)} />
+                    <Tab style={{ fontSize: "0.8em" }} label="Fixtures" {...a11yProps(1)} />
+                    <Tab style={{ fontSize: "0.8em" }} label="Standings" {...a11yProps(2)} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
