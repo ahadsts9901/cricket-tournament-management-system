@@ -26,9 +26,10 @@ body,
 
 ::selection {
   color: $whitePurpleText;
-  background-color: $darkPurpleText;
+  background-color: $main;
 }
 
 .MuiOutlinedInput-root {
   border-radius: 0 !important;
+  height: 45px !important;
 }

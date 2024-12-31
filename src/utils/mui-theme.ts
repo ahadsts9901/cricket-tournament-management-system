@@ -61,7 +61,8 @@ export const themeData: any = {
                 root: {
                     textTransform: 'none',
                     borderRadius: '0px',
-                    padding: "10px 20px"
+                    padding: "10px 20px",
+                    height: "44px"
                 },
                 containedSecondary: {
                     border: "1px solid #7a2cbe",

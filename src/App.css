@@ -17,14 +17,15 @@ body,
 
 ::-moz-selection {
   color: #fdecff;
-  background-color: #1f112f;
+  background-color: #7a2cbe;
 }
 
 ::selection {
   color: #fdecff;
-  background-color: #1f112f;
+  background-color: #7a2cbe;
 }
 
 .MuiOutlinedInput-root {
   border-radius: 0 !important;
+  height: 45px !important;
 }/*# sourceMappingURL=App.css.map */
