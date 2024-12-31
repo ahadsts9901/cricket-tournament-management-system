@@ -1,7 +1,7 @@
 import "./App.css"
 import { FormEvent, useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
-import { Team } from "./types";
+import { State, Team } from "./types";
 
 export const Form = ({ teams, set_teams }: any) => {
     const [team, set_team] = useState("")
@@ -27,14 +27,27 @@ export const Form = ({ teams, set_teams }: any) => {
 }
 
 const App = () => {
-    const [state, set_state] = useState({})
-    const [teams, set_teams] = useState<Team[]>([])
+    const [state, set_state] = useState<State>({ teams: [] })
+    const [teams, set_teams] = useState<Team[]>(state?.teams)
 
     useEffect(() => {
-        set_state({
+        const localState = localStorage.getItem("state")
+        if (localState) {
+            set_state(JSON.parse(localState))
+        } else {
+            set_state({
+                teams: []
+            })
+        }
+    }, [])
+
+    useEffect(() => {
+        const newState = {
             ...state,
             teams: teams
-        })
+        }
+        set_state(newState)
+        localStorage.setItem("state", JSON.stringify(newState))
     }, [teams])
 
     console.log("state", state)
