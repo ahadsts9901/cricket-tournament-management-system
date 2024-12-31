@@ -21,10 +21,13 @@ export const SingleTeam = ({ team, state, set_state }: any) => {
     const delete_team = (teamId: number) => {
         if (!teamId) return
         const updated_teams = state?.teams?.filter((team: Team) => team?.id != teamId)
-        set_state({
+        const updatedState = {
             ...state,
             teams: updated_teams
-        })
+        }
+        set_state(updatedState)
+        localStorage.setItem("state", JSON.stringify(updatedState))
+        set_is_alert_open(false)
     }
 
     return (
