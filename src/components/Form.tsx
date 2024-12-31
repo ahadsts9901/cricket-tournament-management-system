@@ -25,6 +25,8 @@ export const Form = ({ state, set_state }: any) => {
         const newState: State = {
             matches: [],
             teams: [],
+            overs: state?.overs,
+            standings: []
         }
         set_state(newState)
         localStorage.setItem("state", JSON.stringify(newState))

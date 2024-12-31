@@ -102,7 +102,13 @@ const Standings = ({ state, set_state }: any) => {
 
             return teamStats;
         });
-        console.log("standings", standings);
+
+        const newState = {
+            ...state,
+            standings: standings
+        }
+        set_state(newState)
+        localStorage.setItem("state", JSON.stringify(newState))
     }
 
     const saveOvers = () => {
