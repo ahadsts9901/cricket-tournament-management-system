@@ -49,8 +49,12 @@ body {
 }
 
 .teams-cont {
-  height: calc(100vh - 220px);
+  height: calc(100vh - 380px);
   overflow-y: auto;
+}
+
+.others-cont {
+  height: calc(100vh - 220px);
 }
 
 ::-webkit-scrollbar {

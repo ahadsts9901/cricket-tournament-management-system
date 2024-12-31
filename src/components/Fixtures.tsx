@@ -174,7 +174,7 @@ const Fixtures = ({ state, set_state }: any) => {
                 control={<Switch size="small" checked={duplicates} sx={{ mr: 1, ml: 1 }}
                     onChange={(e: any) => set_duplicates(e?.target?.checked)}
                 />} label="Duplicate Matches" />
-            <div className="w-full flex flex-col p-2 pt-0 gap-2 teams-cont">
+            <div className="w-full flex flex-col p-2 pt-0 gap-2 teams-cont others-cont">
                 <ExampleHeader />
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
                     <SingleMatch match={match} state={state} set_state={set_state} key={i} index={i} />
