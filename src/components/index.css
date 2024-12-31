@@ -45,4 +45,23 @@
   .MuiBox-root.css-19kzrtu {
     padding: 0.5em !important;
   }
+}
+
+.custom-table-sts {
+  width: 100%;
+  min-height: calc(100vh - 250px);
+  max-height: calc(100vh - 250px);
+  margin-top: 1.5em;
+}
+
+.custom-table-sts .MuiDataGrid-columnHeader {
+  background-color: #3c0a6d;
+  color: #fdecff;
+}
+.custom-table-sts .MuiDataGrid-columnHeader svg {
+  color: #fdecff;
+}
+
+.MuiDataGrid-scrollbarFiller {
+  background-color: #F3E8FF;
 }/*# sourceMappingURL=index.css.map */
