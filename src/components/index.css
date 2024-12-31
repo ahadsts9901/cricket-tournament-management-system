@@ -5,4 +5,26 @@
   align-items: center;
   gap: 8px;
   font-size: 0.9em;
+  flex-wrap: wrap;
+}
+@media (max-width: 880px) {
+  .single-match {
+    flex-direction: column;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    border-top: 1px solid purple;
+  }
+}
+@media (max-width: 390px) {
+  .single-match .index,
+  .single-match input[type=text],
+  .single-match button {
+    width: 50px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .MuiBox-root.css-19kzrtu {
+    padding: 0.5em !important;
+  }
 }/*# sourceMappingURL=index.css.map */
