@@ -45,8 +45,19 @@ body {
 }
 
 .teams-cont {
-  height: calc(100vh - 380px);
+  height: calc(100vh - 300px);
   overflow-y: auto;
+  margin: auto;
+}
+@media (max-width: 835px) {
+  .teams-cont {
+    height: calc(100vh - 400px);
+  }
+}
+@media (max-width: 420px) {
+  .teams-cont {
+    height: calc(100vh - 430px);
+  }
 }
 
 .others-cont {

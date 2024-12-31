@@ -28,7 +28,7 @@ const App = () => {
     return (
         <div className="w-full h-full flex flex-col justify-start items-center gap-4 p-2 bg-purple-100">
             {!value ? <Fragment>
-                <h2 className="text-4xl text-purple-700 font uppercase tracking-[8px] my-4">Title</h2>
+                <h2 className="text-2xl text-center text-purple-700 font uppercase tracking-[8px] my-4">Cricket Tournament Management System</h2>
                 <Form
                     set_state={set_state}
                     state={state}
