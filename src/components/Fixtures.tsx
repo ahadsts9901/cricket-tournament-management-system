@@ -79,32 +79,6 @@ const Fixtures = ({ state, set_state }: any) => {
         }
     };
 
-    const sortMatches = (matches: { team1: Team; team2: Team }[]) => {
-        const sorted: { team1: Team; team2: Team }[] = [];
-
-        const schedule: { team1: Team; team2: Team }[] = [];
-
-        for (let i = 0; i < matches.length; i++) {
-            const match = matches[i];
-            schedule.push(match);
-        }
-
-        let index = 0;
-        while (index < schedule.length) {
-            const match = schedule[index];
-
-            if (sorted.length === 0 || (sorted[sorted.length - 1].team1.id !== match.team1.id && sorted[sorted.length - 1].team1.id !== match.team2.id)) {
-                sorted.push(match);
-                index++;
-            } else {
-                schedule.push(match);
-                index++;
-            }
-        }
-
-        return matches;
-    };
-
     const shuffleArray = (array: any[]) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -118,10 +92,9 @@ const Fixtures = ({ state, set_state }: any) => {
         if (state?.teams?.length <= 1) return
         const generatedMatches = generateMatches(state?.teams)
         const shuffledMatches = shuffleArray(generatedMatches)
-        const sortedMatches = sortMatches(shuffledMatches)
         const newState = {
             ...state,
-            matches: sortedMatches
+            matches: shuffledMatches
         }
         set_state(newState)
         localStorage.setItem("state", JSON.stringify(newState))
