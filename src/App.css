@@ -36,6 +36,10 @@ body {
   font-size: 0.95em !important;
 }
 
+.MuiOutlinedInput-input {
+  padding: 12px !important;
+}
+
 .MuiPaper-rounded {
   border-radius: 0 !important;
 }

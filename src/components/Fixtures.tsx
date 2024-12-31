@@ -1,11 +1,27 @@
 import "./index.css"
-import { Match, Team } from "../types"
-import { Button } from "@mui/material";
+import { Match, State, Team } from "../types"
+import { Button, TextField } from "@mui/material";
 
-const SingleMatch = ({ match, state, set_state }: any) => {
+const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: number, state: State, set_state: any }) => {
     return (
         <div className="single-match">
-
+            <div className="w-full flex justify-start items-center gap-2">
+                <p className="w-[75px] text-left text-purple-800">{`${index + 1})`}</p>
+                <TextField style={{ width: "80px" }} placeholder="Runs" />
+                <TextField style={{ width: "80px" }} placeholder="Wickets" />
+                <TextField style={{ width: "80px" }} placeholder="Overs" />
+            </div>
+            <p className="capitalize">{match.team1.teamName}</p>
+            <p>vs</p>
+            <p className="capitalize">{match.team2.teamName}</p>
+            <div className="w-full flex justify-end items-center gap-2">
+                <TextField style={{ width: "80px" }} placeholder="Runs" />
+                <TextField style={{ width: "80px" }} placeholder="Wickets" />
+                <TextField style={{ width: "80px" }} placeholder="Overs" />
+                <Button variant="outlined" color="primary"
+                    sx={{ width: "65px" }}
+                >Save</Button>
+            </div>
         </div>
     )
 }
@@ -90,14 +106,9 @@ const Fixtures = ({ state, set_state }: any) => {
                     onClick={generateFixtures}
                 >Generate Fixtures</Button>
             </div>
-            <div className="w-full flex flex-col gap-4 p-2 teams-cont">
+            <div className="w-full flex flex-col p-2 gap-2 teams-cont">
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
-                    <div key={i}
-                        className="w-full flex justify-start items-start gap-2"
-                    >
-                        <p className="w-[100px] text-left text-purple-800">{`${i + 1})`}</p>
-                        <SingleMatch match={match} state={state} set_state={set_state} />
-                    </div>
+                    <SingleMatch match={match} state={state} set_state={set_state} key={i} index={i} />
                 )) : null}
             </div>
         </div>
