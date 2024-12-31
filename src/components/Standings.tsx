@@ -31,13 +31,11 @@ const Standings = ({ state, set_state }: any) => {
                 if ((match.team1.id === team.id && match.team1.runs) || (match.team2.id === team.id && match.team2.runs)) {
                     teamStats.matchesPlayed += 1;
                     let isAllOut = false; // Flag to check if the team is all out
-                    let isAllOutOpponent = false; // Flag to check if the opponent team is all out
 
                     if (match.team1.id === team.id) {
                         teamStats.totalRuns += match.team1.runs;
                         teamStats.totalBalls += convertOversToBalls(match.team1.overs);
                         isAllOut = match.team1.wickets === 10; // Check if team1 is all out
-                        isAllOutOpponent = match.team2.wickets === 10; // Check if team2 is all out
                         if (match.team1.runs > match.team2.runs) {
                             teamStats.wins += 1;
                             teamStats.points += 2;
@@ -51,7 +49,6 @@ const Standings = ({ state, set_state }: any) => {
                         teamStats.totalRuns += match.team2.runs;
                         teamStats.totalBalls += convertOversToBalls(match.team2.overs);
                         isAllOut = match.team2.wickets === 10; // Check if team2 is all out
-                        isAllOutOpponent = match.team1.wickets === 10; // Check if team1 is all out
                         if (match.team2.runs > match.team1.runs) {
                             teamStats.wins += 1;
                             teamStats.points += 2;
