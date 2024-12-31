@@ -1,6 +1,6 @@
 import "./index.css"
 import { Match, State, Team } from "../types"
-import { Button, TextField } from "@mui/material";
+import { Button, FormControlLabel, Switch, TextField } from "@mui/material";
 import { useState } from "react";
 
 const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: number, state: State, set_state: any }) => {
@@ -120,15 +120,15 @@ const Fixtures = ({ state, set_state }: any) => {
 
     return (
         <div className="w-full flex flex-col gap-2">
-            <div className="w-full flex justify-between items-center flex-wrap">
+            <div className="w-full flex justify-between items-center flex-wrap gap-2 mb-2">
                 <h2 className="text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2 mr-4">Fixtures</h2>
-                <div className="flex justify-start items-center gap-2">
-                    
+                <div className="flex justify-start items-center gap-2 flex-wrap">
                     <Button className="w-[180px]" color="primary" variant="outlined"
                         onClick={generateFixtures}
                     >Generate Fixtures</Button>
                 </div>
             </div>
+            <FormControlLabel control={<Switch size="small" defaultChecked sx={{ mr: 1, ml: 1 }} />} label="Duplicate Matches" />
             <div className="w-full flex flex-col p-2 gap-2 teams-cont">
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
                     <SingleMatch match={match} state={state} set_state={set_state} key={i} index={i} />
