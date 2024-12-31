@@ -1,7 +1,1 @@
-point table
-points and played matches, lose matches, wins, ties and also net runrate according to the runs
-
-also update teams positions on the points table like 1st or second
-
-additional features:
-    also add "q" sign if a team is 100% qualified
+min max overs and wickets

@@ -1,9 +1,12 @@
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { Match, Team } from "../types";
 
 const Standings = ({ state, set_state }: any) => {
 
-    console.log(state)
+    const convertOversToBalls = (overs: number) => {
+        const [oversPart, ballsPart] = overs.toString().split('.').map(Number);
+        return (oversPart * 6) + (ballsPart || 0);
+    }
 
     const update_standings = () => {
         const standings = state.teams.map((team: Team) => {
@@ -14,7 +17,7 @@ const Standings = ({ state, set_state }: any) => {
                 losses: 0,
                 ties: 0,
                 totalRuns: 0,
-                totalOvers: 0,
+                totalBalls: 0,
                 netRunRate: 0,
                 points: 0,
             };
@@ -24,7 +27,7 @@ const Standings = ({ state, set_state }: any) => {
                     teamStats.matchesPlayed += 1;
                     if (match.team1.id === team.id) {
                         teamStats.totalRuns += match.team1.runs;
-                        teamStats.totalOvers += match.team1.overs;
+                        teamStats.totalBalls += convertOversToBalls(match.team1.overs);
                         if (match.team1.runs > match.team2.runs) {
                             teamStats.wins += 1;
                             teamStats.points += 2;
@@ -36,7 +39,7 @@ const Standings = ({ state, set_state }: any) => {
                         }
                     } else {
                         teamStats.totalRuns += match.team2.runs;
-                        teamStats.totalOvers += match.team2.overs;
+                        teamStats.totalBalls += convertOversToBalls(match.team2.overs); // Convert overs to balls
                         if (match.team2.runs > match.team1.runs) {
                             teamStats.wins += 1;
                             teamStats.points += 2;
@@ -50,8 +53,7 @@ const Standings = ({ state, set_state }: any) => {
                 }
             });
 
-            // Calculate Net Run Rate
-            const totalOversFaced = teamStats.totalOvers;
+            // Calculate total runs conceded and total balls bowled
             const totalRunsConceded = state.matches.reduce((acc: any, match: any) => {
                 if (match.team1.id === team.id) {
                     return acc + match.team2.runs;
@@ -61,21 +63,22 @@ const Standings = ({ state, set_state }: any) => {
                 return acc;
             }, 0);
 
-            const totalOversBowled = state.matches.reduce((acc: any, match: any) => {
+            const totalBallsBowled = state.matches.reduce((acc: any, match: any) => {
                 if (match.team1.id === team.id) {
-                    return acc + match.team2.overs;
+                    return acc + convertOversToBalls(match.team2.overs);
                 } else if (match.team2.id === team.id) {
-                    return acc + match.team1.overs;
+                    return acc + convertOversToBalls(match.team1.overs);
                 }
                 return acc;
             }, 0);
 
-            teamStats.netRunRate = totalOversFaced > 0 ?
-                (teamStats.totalRuns / totalOversFaced) - (totalRunsConceded / totalOversBowled) : 0;
+            // Calculate Net Run Rate
+            teamStats.netRunRate = teamStats.totalBalls > 0 ?
+                (teamStats.totalRuns / teamStats.totalBalls) - (totalRunsConceded / totalBallsBowled) : 0;
 
             return teamStats;
         });
-        console.log("standings", standings)
+        console.log("standings", standings);
     }
 
     return (
@@ -87,6 +90,10 @@ const Standings = ({ state, set_state }: any) => {
                         onClick={update_standings}
                     >Update Standings</Button>
                 </div>
+            </div>
+            <div className="w-full flex justify-start items-center gap-2">
+                <p className="text-left capitalize text-purple-900">Total Overs:</p>
+                <TextField />
             </div>
         </div>
     )
