@@ -16,6 +16,10 @@ body,
   height: 100vh;
 }
 
+body {
+  overflow: hidden;
+}
+
 ::-moz-selection {
   color: #fdecff;
   background-color: #7a2cbe;
@@ -34,4 +38,33 @@ body,
 
 .MuiPaper-rounded {
   border-radius: 0 !important;
+}
+
+.teams-cont {
+  height: calc(100vh - 400px);
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7a2cbe;
+}
+
+::-moz-scrollbar {
+  width: 10px;
+}
+
+::-moz-scrollbar-track {
+  display: none;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #7a2cbe;
 }/*# sourceMappingURL=App.css.map */

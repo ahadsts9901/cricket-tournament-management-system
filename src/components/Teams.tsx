@@ -70,11 +70,13 @@ export const SingleTeam = ({ team, state, set_state }: any) => {
 
 const Teams = ({ state, set_state }: any) => {
     return (
-        <div className="w-full flex flex-col gap-2">
-            <h2 className="w-full text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2">Teams</h2>
-            {state?.teams?.map((team: Team, i: number) => (
-                <SingleTeam key={i} team={team} state={state} set_state={set_state} />
-            ))}
+        <div className="w-full h-full flex flex-col gap-2">
+            <h2 className="w-full text-left uppercase tracking-[4px] text-purple-700 text-2xl">Teams</h2>
+            <div className="w-full h-full flex flex-col gap-2 p-2 teams-cont">
+                {state?.teams?.map((team: Team, i: number) => (
+                    <SingleTeam key={i} team={team} state={state} set_state={set_state} />
+                ))}
+            </div>
         </div>
     )
 }

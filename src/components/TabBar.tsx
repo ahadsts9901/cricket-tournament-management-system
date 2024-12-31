@@ -43,7 +43,7 @@ const TabBar = ({ state, set_state }: any) => {
     };
 
     return (
-        <Box sx={{ width: '100%', mt: 1 }}>
+        <Box sx={{ width: '100%', height: "100%", mt: 1 }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="fullWidth">
                     <Tab style={{ fontSize: "0.8em" }} label="Teams" {...a11yProps(0)} />
@@ -51,13 +51,13 @@ const TabBar = ({ state, set_state }: any) => {
                     <Tab style={{ fontSize: "0.8em" }} label="Standings" {...a11yProps(2)} />
                 </Tabs>
             </Box>
-            <CustomTabPanel value={value} index={0}>
+            <CustomTabPanel value={value} index={0} >
                 <Teams state={state} set_state={set_state} />
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
+            <CustomTabPanel value={value} index={1} >
                 <Fixtures state={state} set_state={set_state} />
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
+            <CustomTabPanel value={value} index={2} >
                 <Standings state={state} set_state={set_state} />
             </CustomTabPanel>
         </Box>
