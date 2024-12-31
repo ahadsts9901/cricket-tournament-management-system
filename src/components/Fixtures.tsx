@@ -121,6 +121,38 @@ const Fixtures = ({ state, set_state }: any) => {
                 control={<Switch size="small" checked={duplicates} sx={{ mr: 1, ml: 1 }}
                     onChange={(e: any) => set_duplicates(e?.target?.checked)}
                 />} label="Duplicate Matches" />
+            <div className="single-match px-2">
+                <div className="flex justify-start items-center gap-2">
+                    <p className="index w-[65px]"></p>
+                    <TextField style={{ width: "80px" }}
+                        className="index"
+                        value="Runs"
+                    />
+                    <TextField style={{ width: "80px" }}
+                        className="index"
+                        value="Wickets"
+                    />
+                    <TextField style={{ width: "80px" }}
+                        className="index"
+                        value="Overs"
+                    />
+                </div>
+                <div className="flex justify-end items-center gap-2">
+                    <TextField style={{ width: "80px" }}
+                        className="index"
+                        value="Runs"
+                    />
+                    <TextField style={{ width: "80px" }}
+                        className="index"
+                        value="Wickets"
+                    />
+                    <TextField style={{ width: "80px" }}
+                        className="index"
+                        value="Overs"
+                    />
+                    <p className="index w-[65px]"> </p>
+                </div>
+            </div>
             <div className="w-full flex flex-col p-2 gap-2 teams-cont">
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
                     <SingleMatch match={match} state={state} set_state={set_state} key={i} index={i} />

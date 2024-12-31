@@ -45,7 +45,7 @@ body {
 }
 
 .teams-cont {
-  height: calc(100vh - 400px);
+  height: calc(100vh - 500px);
   overflow-y: auto;
 }
 
