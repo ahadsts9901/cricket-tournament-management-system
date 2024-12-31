@@ -52,6 +52,8 @@ const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: 
 
 const Fixtures = ({ state, set_state }: any) => {
 
+    const [duplicates, set_duplicates] = useState(false)
+
     const generateMatches = (teams: Team[]) => {
         const matches: Match[] = [];
 
@@ -132,7 +134,10 @@ const Fixtures = ({ state, set_state }: any) => {
                     >Generate Fixtures</Button>
                 </div>
             </div>
-            <FormControlLabel control={<Switch size="small" defaultChecked sx={{ mr: 1, ml: 1 }} />} label="Duplicate Matches" />
+            <FormControlLabel 
+            control={<Switch size="small" checked={duplicates} sx={{ mr: 1, ml: 1 }} 
+            onChange={(e:any)=>set_duplicates(e?.target?.checked)}
+            />} label="Duplicate Matches" />
             <div className="w-full flex flex-col p-2 gap-2 teams-cont">
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
                     <SingleMatch match={match} state={state} set_state={set_state} key={i} index={i} />
