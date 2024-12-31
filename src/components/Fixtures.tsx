@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { Team } from "../types"
+import { Button } from "@mui/material";
 
 const Fixtures = ({ state, set_state }: any) => {
 
@@ -60,7 +61,10 @@ const Fixtures = ({ state, set_state }: any) => {
 
     return (
         <div className="w-full flex flex-col gap-2">
-            <h2 className="w-full text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2">Fixtures</h2>
+            <div className="w-full flex justify-between items-center flex-wrap">
+                <h2 className="text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2 mr-4">Fixtures</h2>
+                <Button className="w-[180px]" color="primary" variant="outlined">Generate Fixtures</Button>
+            </div>
         </div>
     )
 }
