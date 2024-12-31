@@ -1,4 +1,4 @@
-const Standings = () => {
+const Standings = ({ state, set_state }: any) => {
     return (
         <div>Standings</div>
     )

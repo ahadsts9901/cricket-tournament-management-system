@@ -35,7 +35,7 @@ const a11yProps = (index: number) => {
     };
 }
 
-const TabBar = () => {
+const TabBar = ({ state, set_state }: any) => {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
@@ -52,13 +52,13 @@ const TabBar = () => {
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <Teams />
+                <Teams state={state} set_state={set_state} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <Fixtures />
+                <Fixtures state={state} set_state={set_state} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                <Standings />
+                <Standings state={state} set_state={set_state} />
             </CustomTabPanel>
         </Box>
     );

@@ -1,4 +1,4 @@
-const Teams = () => {
+const Teams = ({ state, set_state }: any) => {
     return (
         <div>Teams</div>
     )

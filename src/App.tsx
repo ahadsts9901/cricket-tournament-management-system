@@ -37,7 +37,7 @@ const App = () => {
                 set_teams={set_teams}
                 teams={teams}
             />
-            <TabBar />
+            <TabBar state={state} set_state={set_state} />
         </div>
     )
 }
