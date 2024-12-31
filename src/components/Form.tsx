@@ -2,14 +2,19 @@ import { FormEvent, useState } from "react"
 import { Team } from "../types"
 import { Button, TextField } from "@mui/material"
 
-export const Form = ({ teams, set_teams }: any) => {
+export const Form = ({ state, set_state }: any) => {
     const [team, set_team] = useState("")
 
     const addTeam = (e: FormEvent) => {
         e.preventDefault()
         if (!team) return
-        const newTeam: Team = { teamName: team, id: teams.length + 1 }
-        set_teams((prev: Team[]) => [newTeam, ...prev])
+        const newTeam: Team = { teamName: team, id: state?.teams?.length + 1 || 1 }
+        const newState = {
+            ...state,
+            teams: [newTeam, ...state?.teams]
+        }
+        set_state(newState)
+        localStorage.setItem("state", JSON.stringify(newState))
         set_team("")
     }
 

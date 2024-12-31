@@ -29,4 +29,8 @@ body,
   border-radius: 0 !important;
   height: 45px !important;
   font-size: 0.95em !important;
+}
+
+.MuiPaper-rounded {
+  border-radius: 0 !important;
 }/*# sourceMappingURL=App.css.map */
