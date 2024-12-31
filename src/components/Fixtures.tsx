@@ -60,17 +60,17 @@ export const SingleMatch = ({ match, index, state, set_state }: { match: Match, 
             <div className="flex justify-start items-center gap-2">
                 <p className="index w-[65px] text-left text-purple-800">{`${index + 1})`}</p>
                 <TextField style={{ width: "80px" }} placeholder="Runs"
-                    className="index"
+                    className="index" type="number"
                     value={full_match.team1.runs}
                     onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, runs: +e.target.value } })}
                 />
                 <TextField style={{ width: "80px" }} placeholder="Wickets"
-                    className="index"
+                    className="index" type="number"
                     value={full_match.team1.wickets}
                     onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, wickets: +e.target.value } })}
                 />
                 <TextField style={{ width: "80px" }} placeholder="Overs"
-                    className="index"
+                    className="index" type="number"
                     value={full_match.team1.overs}
                     onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, overs: +e.target.value } })}
                 />
@@ -78,17 +78,17 @@ export const SingleMatch = ({ match, index, state, set_state }: { match: Match, 
             <p className="capitalize text-purple-900">{match.team1.teamName} v {match.team2.teamName}</p>
             <div className="flex justify-end items-center gap-2">
                 <TextField style={{ width: "80px" }} placeholder="Runs"
-                    className="index"
+                    className="index" type="number"
                     value={full_match.team2.runs}
-                    onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team1, runs: +e.target.value } })}
+                    onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team2, runs: +e.target.value } })}
                 />
                 <TextField style={{ width: "80px" }} placeholder="Wickets"
-                    className="index"
+                    className="index" type="number"
                     value={full_match.team2.wickets}
                     onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team2, wickets: +e.target.value } })}
                 />
                 <TextField style={{ width: "80px" }} placeholder="Overs"
-                    className="index"
+                    className="index" type="number"
                     value={full_match.team2.overs}
                     onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team2, overs: +e.target.value } })}
                 />
