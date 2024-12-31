@@ -1,24 +1,32 @@
-import { useEffect } from "react"
-import { Team } from "../types"
+import { Match, Team } from "../types"
 import { Button } from "@mui/material";
+
+const SingleMatch = ({ match, state, set_state }: any) => {
+    return (
+        <div className="single-match">
+            
+        </div>
+    )
+}
 
 const Fixtures = ({ state, set_state }: any) => {
 
     const generateMatches = (teams: Team[]) => {
-        const matches: { team1: Team; team2: Team }[] = [];
+        const matches: Match[] = [];
 
         for (let i = 0; i < teams.length; i++) {
             for (let j = i + 1; j < teams.length; j++) {
-                const newMatch = { team1: teams[i], team2: teams[j] };
+                const newMatch = {
+                    team1: { ...teams[i], overs: 0, runs: 0, wickets: 0 },
+                    team2: { ...teams[j], overs: 0, runs: 0, wickets: 0 }
+                };
 
-                const matchExists = matches.some(match =>
+                const matchExists = matches.some((match: any) =>
                     (match.team1.id === newMatch.team1.id && match.team2.id === newMatch.team2.id) ||
                     (match.team1.id === newMatch.team2.id && match.team2.id === newMatch.team1.id)
                 );
 
-                if (!matchExists) {
-                    matches.push(newMatch);
-                }
+                if (!matchExists) matches.push(newMatch);
             }
         }
 
@@ -59,11 +67,32 @@ const Fixtures = ({ state, set_state }: any) => {
         return array;
     };
 
+    const generateFixtures = () => {
+        if (!state?.teams) return
+        if (state?.teams?.length <= 1) return
+        const generatedMatches = generateMatches(state?.teams)
+        const shuffledMatches = shuffleArray(generatedMatches)
+        const sortedMatches = sortMatches(shuffledMatches)
+        const newState = {
+            ...state,
+            matches: sortedMatches
+        }
+        set_state(newState)
+        localStorage.setItem("state", JSON.stringify(newState))
+    }
+
     return (
         <div className="w-full flex flex-col gap-2">
             <div className="w-full flex justify-between items-center flex-wrap">
                 <h2 className="text-left uppercase tracking-[4px] text-purple-700 text-2xl mb-2 mr-4">Fixtures</h2>
-                <Button className="w-[180px]" color="primary" variant="outlined">Generate Fixtures</Button>
+                <Button className="w-[180px]" color="primary" variant="outlined"
+                    onClick={generateFixtures}
+                >Generate Fixtures</Button>
+            </div>
+            <div className="w-full flex flex-col gap-2 p-2 teams-cont">
+                {state?.matches ? state?.matches?.map((match: Match, i: number) => (
+                    <SingleMatch key={i} match={match} state={state} set_state={set_state} />
+                )) : null}
             </div>
         </div>
     )
