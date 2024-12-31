@@ -5,7 +5,7 @@ import { Form } from "./components/Form";
 import TabBar from "./components/TabBar";
 
 const App = () => {
-    const [state, set_state] = useState<State>({ teams: [] })
+    const [state, set_state] = useState<State>({ teams: [], matches: [] })
     const [value, setValue] = useState(0);
 
     useEffect(() => {
@@ -15,7 +15,8 @@ const App = () => {
             set_state(parsed_state)
         } else {
             const newState = {
-                teams: []
+                teams: [],
+                matches: []
             }
             set_state(newState)
             localStorage.setItem("state", JSON.stringify(newState))
