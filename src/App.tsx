@@ -1,10 +1,9 @@
-import { Button } from "@mui/material"
 import "./App.css"
 
 const App = () => {
     return (
-        <div>
-            <Button>hello</Button>
+        <div className="w-full">
+            <p className="bg-red-700">hi'</p>
         </div>
     )
 }
