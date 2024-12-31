@@ -28,12 +28,18 @@ const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: 
             <p>vs</p>
             <p className="capitalize">{match.team2.teamName}</p>
             <div className="w-full flex justify-end items-center gap-2">
-                <TextField style={{ width: "80px" }} placeholder="Runs" 
-                value={full_match.team1.runs}
-                onChange={(e: any) => set_full_match({ ...full_match, team1: { ...full_match.team1, runs: e.target.value } })}
+                <TextField style={{ width: "80px" }} placeholder="Runs"
+                    value={full_match.team2.runs}
+                    onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team1, runs: e.target.value } })}
                 />
-                <TextField style={{ width: "80px" }} placeholder="Wickets" />
-                <TextField style={{ width: "80px" }} placeholder="Overs" />
+                <TextField style={{ width: "80px" }} placeholder="Wickets"
+                    value={full_match.team2.wickets}
+                    onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team2, wickets: e.target.value } })}
+                />
+                <TextField style={{ width: "80px" }} placeholder="Overs"
+                    value={full_match.team2.overs}
+                    onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team2, overs: e.target.value } })}
+                />
                 <Button variant="outlined" color="primary" sx={{ width: "65px" }}>Save</Button>
             </div>
         </div>
