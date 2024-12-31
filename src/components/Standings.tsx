@@ -1,7 +1,9 @@
 import { Button, TextField } from "@mui/material";
 import { Match, Team } from "../types";
+import { useState } from "react";
 
 const Standings = ({ state, set_state }: any) => {
+    const [overs, set_overs] = useState(state?.overs)
 
     const convertOversToBalls = (overs: number) => {
         const [oversPart, ballsPart] = overs.toString().split('.').map(Number);
@@ -81,6 +83,17 @@ const Standings = ({ state, set_state }: any) => {
         console.log("standings", standings);
     }
 
+    const saveOvers = () => {
+        if (!overs) return
+        if (state?.overs == overs) return
+        const new_state = {
+            ...state,
+            overs: overs
+        }
+        set_state(new_state)
+        localStorage.setItem("state", new_state)
+    }
+
     return (
         <div className="w-full flex flex-col gap-2">
             <div className="w-full flex justify-between items-center flex-wrap gap-2 mb-2">
@@ -93,7 +106,13 @@ const Standings = ({ state, set_state }: any) => {
             </div>
             <div className="w-full flex justify-start items-center gap-2">
                 <p className="text-left capitalize text-purple-900">Total Overs:</p>
-                <TextField />
+                <TextField
+                    type="number"
+                    sx={{ width: "100px" }}
+                    value={overs}
+                    onChange={(e: any) => set_overs(e?.target?.value)}
+                />
+                <Button onClick={saveOvers} variant="outlined" color="primary">Save</Button>
             </div>
         </div>
     )

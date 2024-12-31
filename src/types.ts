@@ -17,4 +17,5 @@ export interface Match {
 export interface State {
     teams: Team[],
     matches: Match[],
+    overs: number,
 }
