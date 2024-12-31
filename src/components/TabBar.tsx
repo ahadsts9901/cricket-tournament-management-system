@@ -35,8 +35,7 @@ const a11yProps = (index: number) => {
     };
 }
 
-const TabBar = ({ state, set_state }: any) => {
-    const [value, setValue] = React.useState(0);
+const TabBar = ({ state, set_state, value, setValue }: any) => {
 
     const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);

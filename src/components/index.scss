@@ -29,14 +29,16 @@
 }
 
 .main {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #9c9c9c;
+
     @media(max-width:880px) {
         padding-top: 0.5em;
-        padding-bottom: 0em;
     }
 
     @media(max-width:390px) {
         .MuiTextField-root {
-            width:  80px !important;
+            width: 80px !important;
         }
     }
 }
