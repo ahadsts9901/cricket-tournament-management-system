@@ -1,1 +1,0 @@
-change alert and prompt colors
