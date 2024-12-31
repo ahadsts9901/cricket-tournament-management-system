@@ -7,6 +7,10 @@ const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: 
 
     const [full_match, set_full_match] = useState<Match>(match)
 
+    const saveMatch = () => {
+        console.log("full_match", full_match)
+    }
+
     return (
         <div className="single-match">
             <div className="flex justify-start items-center gap-2">
@@ -44,7 +48,9 @@ const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: 
                     value={full_match.team2.overs}
                     onChange={(e: any) => set_full_match({ ...full_match, team2: { ...full_match.team2, overs: e.target.value } })}
                 />
-                <Button variant="outlined" color="primary" sx={{ width: "65px" }} className="index">Save</Button>
+                <Button variant="outlined" color="primary" sx={{ width: "65px" }} className="index"
+                    onClick={saveMatch}
+                >Save</Button>
             </div>
         </div>
     )
