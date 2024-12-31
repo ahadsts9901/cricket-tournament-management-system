@@ -25,8 +25,6 @@ const App = () => {
         }
     }, [])
 
-    console.log("state", state)
-
     return (
         <div className="w-full h-full flex flex-col justify-start items-center gap-4 p-2 bg-purple-100">
             {!value ? <Fragment>
