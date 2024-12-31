@@ -26,7 +26,8 @@ export const Form = ({ state, set_state }: any) => {
                 value={team}
                 placeholder="Enter team name"
             />
-            <Button className="w-[150px]" color="primary" variant="outlined">Add Team</Button>
+            <Button className="w-[120px]" color="primary" variant="outlined">Add Team</Button>
+            <Button className="w-[120px]" color="primary" variant="outlined">Reset</Button>
         </form>
     )
 }
