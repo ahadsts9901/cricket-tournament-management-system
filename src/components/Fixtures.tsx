@@ -45,7 +45,14 @@ export const SingleMatch = ({ match, index, state, set_state }: { match: Match, 
     const [full_match, set_full_match] = useState<Match>(match)
 
     const saveMatch = () => {
-        console.log("full_match", full_match)
+        const matches = state?.matches
+        matches[index] = full_match
+        const newState = {
+            ...state,
+            matches: matches
+        }
+        set_state(newState)
+        localStorage.setItem("state", JSON.stringify(newState))
     }
 
     return (
@@ -132,7 +139,16 @@ const Fixtures = ({ state, set_state }: any) => {
 
     const generateFixtures = () => {
         if (!state?.teams) return
-        if (state?.teams?.length <= 1) return
+        if (state?.teams?.length <= 1) {
+            const newState = {
+                ...state,
+                matches: []
+            }
+            set_state(newState)
+            localStorage.setItem("state", JSON.stringify(newState))
+            set_duplicates(false)
+            return
+        }
         const generatedMatches = generateMatches(state?.teams)
         const shuffledMatches = shuffleArray(generatedMatches)
         const newState = {

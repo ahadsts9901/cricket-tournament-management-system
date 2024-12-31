@@ -3,10 +3,6 @@ export interface Team {
     id: number
 }
 
-export interface State {
-    teams: Team[]
-}
-
 export interface MatchSingleTeam extends Team {
     overs: number
     runs: number
@@ -16,4 +12,9 @@ export interface MatchSingleTeam extends Team {
 export interface Match {
     team1: MatchSingleTeam
     team2: MatchSingleTeam
+}
+
+export interface State {
+    teams: Team[],
+    matches: Match[],
 }
