@@ -98,6 +98,7 @@ const Fixtures = ({ state, set_state }: any) => {
         }
         set_state(newState)
         localStorage.setItem("state", JSON.stringify(newState))
+        set_duplicates(false)
     }
 
     return (
