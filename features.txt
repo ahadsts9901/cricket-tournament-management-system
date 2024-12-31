@@ -1,12 +1,3 @@
-cricket teams crud
-all with local storage
-
-when a team is created so automatically schedule its matches with all teams
-when a team is updated so also update his data in matches
-if a team is deleted so automatically remove his all matches
-
-matches score crud
-
 point table
 points and played matches, lose matches, wins, ties and also net runrate according to the runs
 
