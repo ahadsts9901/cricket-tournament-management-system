@@ -30,6 +30,23 @@ export const SingleTeam = ({ team, state, set_state }: any) => {
         set_is_alert_open(false)
     }
 
+    const edit_team = () => {
+        const teamId = team?.id
+        if (!teamId) return
+        const updatedTeamName = prompt("Edit team name", team?.teamName)
+        if (!updatedTeamName) return
+        const updated_teams = state?.teams?.map((team: Team) => (
+            teamId == team?.id ? { ...team, teamName: updatedTeamName } : team
+        ))
+        const updatedState = {
+            ...state,
+            teams: updated_teams
+        }
+        set_state(updatedState)
+        localStorage.setItem("state", JSON.stringify(updatedState))
+        set_is_alert_open(false)
+    }
+
     return (
         <Fragment>
             <ConfirmAlertMUI
@@ -43,7 +60,7 @@ export const SingleTeam = ({ team, state, set_state }: any) => {
             <div className="w-full flex justify-between items-center gap-2">
                 <p className="w-full text-left text-purple-800 capitalize overflow-hidden whitespace-nowrap text-ellipsis">{team?.teamName}</p>
                 <div className="w-fit flex justify-center items-center gap-2">
-                    <Button color="primary" variant="outlined" sx={{ height: "30px" }}><MdEdit style={{ fontSize: "1.2em" }} /></Button>
+                    <Button color="primary" variant="outlined" sx={{ height: "30px" }} onClick={edit_team}><MdEdit style={{ fontSize: "1.2em" }} /></Button>
                     <Button color="primary" variant="outlined" sx={{ height: "30px" }} onClick={confirmDeletion}><MdDelete style={{ fontSize: "1.2em" }} /></Button>
                 </div>
             </div>
