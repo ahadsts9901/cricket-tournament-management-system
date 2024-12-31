@@ -5,6 +5,7 @@ $semiLight: #9d4edd;
 $light: #e0aafe;
 $whitePurpleText: #fdecff;
 $darkPurpleText: #1f112f;
+$bgColor: #F3E8FF;
 
 .single-match {
     width: 100%;
@@ -62,6 +63,11 @@ $darkPurpleText: #1f112f;
     min-height: calc(100vh - 250px);
     max-height: calc(100vh - 250px);
     margin-top: 1.5em;
+    background-color: $bgColor !important;
+}
+
+.MuiDataGrid-overlay {
+    background-color: $bgColor !important;
 }
 
 .custom-table-sts .MuiDataGrid-columnHeader {
@@ -73,6 +79,6 @@ $darkPurpleText: #1f112f;
     }
 }
 
-.MuiDataGrid-scrollbarFiller{
-    background-color: #F3E8FF;
+.MuiDataGrid-scrollbarFiller {
+    background-color: $bgColor;
 }
