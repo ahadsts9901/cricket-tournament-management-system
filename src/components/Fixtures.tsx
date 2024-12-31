@@ -3,7 +3,44 @@ import { Match, State, Team } from "../types"
 import { Button, FormControlLabel, Switch, TextField } from "@mui/material";
 import { useState } from "react";
 
-const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: number, state: State, set_state: any }) => {
+export const ExampleHeader = () => {
+    return (
+        <div className="single-match main bg-purple-100 sticky top-0 z-10 pt-2">
+            <div className="flex justify-start items-center gap-2">
+                <p className="index w-[65px] second"></p>
+                <TextField style={{ width: "80px" }}
+                    className="index"
+                    value="Runs"
+                />
+                <TextField style={{ width: "80px" }}
+                    className="index"
+                    value="Wickets"
+                />
+                <TextField style={{ width: "80px" }}
+                    className="index"
+                    value="Overs"
+                />
+            </div>
+            <div className="second flex justify-end items-center gap-2">
+                <TextField style={{ width: "80px" }}
+                    className="index"
+                    value="Runs"
+                />
+                <TextField style={{ width: "80px" }}
+                    className="index"
+                    value="Wickets"
+                />
+                <TextField style={{ width: "80px" }}
+                    className="index"
+                    value="Overs"
+                />
+                <p className="index w-[65px]"> </p>
+            </div>
+        </div>
+    )
+}
+
+export const SingleMatch = ({ match, index, state, set_state }: { match: Match, index: number, state: State, set_state: any }) => {
 
     const [full_match, set_full_match] = useState<Match>(match)
 
@@ -121,39 +158,8 @@ const Fixtures = ({ state, set_state }: any) => {
                 control={<Switch size="small" checked={duplicates} sx={{ mr: 1, ml: 1 }}
                     onChange={(e: any) => set_duplicates(e?.target?.checked)}
                 />} label="Duplicate Matches" />
-            <div className="single-match px-2">
-                <div className="flex justify-start items-center gap-2">
-                    <p className="index w-[65px]"></p>
-                    <TextField style={{ width: "80px" }}
-                        className="index"
-                        value="Runs"
-                    />
-                    <TextField style={{ width: "80px" }}
-                        className="index"
-                        value="Wickets"
-                    />
-                    <TextField style={{ width: "80px" }}
-                        className="index"
-                        value="Overs"
-                    />
-                </div>
-                <div className="flex justify-end items-center gap-2">
-                    <TextField style={{ width: "80px" }}
-                        className="index"
-                        value="Runs"
-                    />
-                    <TextField style={{ width: "80px" }}
-                        className="index"
-                        value="Wickets"
-                    />
-                    <TextField style={{ width: "80px" }}
-                        className="index"
-                        value="Overs"
-                    />
-                    <p className="index w-[65px]"> </p>
-                </div>
-            </div>
-            <div className="w-full flex flex-col p-2 gap-2 teams-cont">
+            <div className="w-full flex flex-col p-2 pt-0 gap-2 teams-cont">
+                <ExampleHeader />
                 {state?.matches ? state?.matches?.map((match: Match, i: number) => (
                     <SingleMatch match={match} state={state} set_state={set_state} key={i} index={i} />
                 )) : null}

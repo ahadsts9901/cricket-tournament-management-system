@@ -12,6 +12,10 @@
         padding-top: 1.5em;
         padding-bottom: 1em;
         border-top: 1px solid purple;
+
+        .second {
+            display: none;
+        }
     }
 
     @media(max-width:390px) {
@@ -20,6 +24,19 @@
         input[type="text"],
         button {
             width: 50px !important;
+        }
+    }
+}
+
+.main {
+    @media(max-width:880px) {
+        padding-top: 0.5em;
+        padding-bottom: 0em;
+    }
+
+    @media(max-width:390px) {
+        .MuiTextField-root {
+            width:  80px !important;
         }
     }
 }
