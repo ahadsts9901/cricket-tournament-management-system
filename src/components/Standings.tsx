@@ -11,6 +11,9 @@ const Standings = ({ state, set_state }: any) => {
     }
 
     const update_standings = () => {
+        const totalOversForNRR = state?.overs; // Fixed overs for NRR calculation
+        const totalBallsForNRR = totalOversForNRR * 6; // Convert overs to balls
+
         const standings = state.teams.map((team: Team) => {
             const teamStats = {
                 teamName: team.teamName,
@@ -27,9 +30,14 @@ const Standings = ({ state, set_state }: any) => {
             state.matches.forEach((match: Match) => {
                 if ((match.team1.id === team.id && match.team1.runs) || (match.team2.id === team.id && match.team2.runs)) {
                     teamStats.matchesPlayed += 1;
+                    let isAllOut = false; // Flag to check if the team is all out
+                    let isAllOutOpponent = false; // Flag to check if the opponent team is all out
+
                     if (match.team1.id === team.id) {
                         teamStats.totalRuns += match.team1.runs;
                         teamStats.totalBalls += convertOversToBalls(match.team1.overs);
+                        isAllOut = match.team1.wickets === 10; // Check if team1 is all out
+                        isAllOutOpponent = match.team2.wickets === 10; // Check if team2 is all out
                         if (match.team1.runs > match.team2.runs) {
                             teamStats.wins += 1;
                             teamStats.points += 2;
@@ -41,7 +49,9 @@ const Standings = ({ state, set_state }: any) => {
                         }
                     } else {
                         teamStats.totalRuns += match.team2.runs;
-                        teamStats.totalBalls += convertOversToBalls(match.team2.overs); // Convert overs to balls
+                        teamStats.totalBalls += convertOversToBalls(match.team2.overs);
+                        isAllOut = match.team2.wickets === 10; // Check if team2 is all out
+                        isAllOutOpponent = match.team1.wickets === 10; // Check if team1 is all out
                         if (match.team2.runs > match.team1.runs) {
                             teamStats.wins += 1;
                             teamStats.points += 2;
@@ -52,10 +62,15 @@ const Standings = ({ state, set_state }: any) => {
                             teamStats.points += 1;
                         }
                     }
+
+                    // If the team is all out, set total balls faced for NRR to totalBallsForNRR
+                    if (isAllOut) {
+                        teamStats.totalBalls = totalBallsForNRR; // Set to 120 balls (20 overs)
+                    }
                 }
             });
 
-            // Calculate total runs conceded and total balls bowled
+            // Calculate total runs conceded
             const totalRunsConceded = state.matches.reduce((acc: any, match: any) => {
                 if (match.team1.id === team.id) {
                     return acc + match.team2.runs;
@@ -65,18 +80,28 @@ const Standings = ({ state, set_state }: any) => {
                 return acc;
             }, 0);
 
+            // Calculate total balls bowled
             const totalBallsBowled = state.matches.reduce((acc: any, match: any) => {
                 if (match.team1.id === team.id) {
-                    return acc + convertOversToBalls(match.team2.overs);
+                    // If team1 is bowling, check if team2 is all out
+                    if (match.team2.wickets === 10) {
+                        return acc + convertOversToBalls(match.team2.overs); // Add actual balls faced by team2
+                    }
+                    return acc + convertOversToBalls(match.team2.overs); // Add total overs bowled
                 } else if (match.team2.id === team.id) {
-                    return acc + convertOversToBalls(match.team1.overs);
+                    // If team2 is bowling, check if team1 is all out
+                    if (match.team1.wickets === 10) {
+                        return acc + convertOversToBalls(match.team1.overs); // Add actual balls faced by team1
+                    }
+                    return acc + convertOversToBalls(match.team1.overs); // Add total overs bowled
                 }
                 return acc;
             }, 0);
 
             // Calculate Net Run Rate
-            teamStats.netRunRate = teamStats.totalBalls > 0 ?
-                (teamStats.totalRuns / teamStats.totalBalls) - (totalRunsConceded / totalBallsBowled) : 0;
+            const ballsFacedForNRR = teamStats.totalBalls; // Use the adjusted total balls
+            teamStats.netRunRate = ballsFacedForNRR > 0 ?
+                (teamStats.totalRuns / ballsFacedForNRR) - (totalRunsConceded / totalBallsBowled) : 0;
 
             return teamStats;
         });
@@ -91,7 +116,7 @@ const Standings = ({ state, set_state }: any) => {
             overs: overs
         }
         set_state(new_state)
-        localStorage.setItem("state", new_state)
+        localStorage.setItem("state", JSON.stringify(new_state))
     }
 
     return (
