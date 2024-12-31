@@ -60,7 +60,7 @@ export const themeData: any = {
             styleOverrides: {
                 root: {
                     textTransform: 'none',
-                    borderRadius: '50px',
+                    borderRadius: '0px',
                     padding: "10px 20px"
                 },
                 containedSecondary: {
