@@ -7,6 +7,7 @@ $semiLight: #9d4edd;
 $light: #e0aafe;
 $whitePurpleText: #fdecff;
 $darkPurpleText: #1f112f;
+$bgColor: #F3E8FF;
 
 * {
   margin: 0;
@@ -26,7 +27,9 @@ body,
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $bgColor;
 }
 
 ::selection {
@@ -46,20 +49,6 @@ body {
 
 .MuiPaper-rounded {
   border-radius: 0 !important;
-}
-
-.teams-cont {
-  height: calc(100vh - 300px);
-  overflow-y: auto;
-  margin: auto;
-
-  @media(max-width: 835px) {
-    height: calc(100vh - 400px);
-  }
-
-  @media(max-width: 420px) {
-    height: calc(100vh - 430px);
-  }
 }
 
 .others-cont {

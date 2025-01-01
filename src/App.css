@@ -17,7 +17,9 @@ body,
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #F3E8FF;
 }
 
 ::-moz-selection {
@@ -42,22 +44,6 @@ body {
 
 .MuiPaper-rounded {
   border-radius: 0 !important;
-}
-
-.teams-cont {
-  height: calc(100vh - 300px);
-  overflow-y: auto;
-  margin: auto;
-}
-@media (max-width: 835px) {
-  .teams-cont {
-    height: calc(100vh - 400px);
-  }
-}
-@media (max-width: 420px) {
-  .teams-cont {
-    height: calc(100vh - 430px);
-  }
 }
 
 .others-cont {
